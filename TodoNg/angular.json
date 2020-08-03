@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "TodoNg"
+    }
+  },
+  "defaultProject": "TodoNg",
+  "cli": {
+    "analytics": false
+  }
 }
