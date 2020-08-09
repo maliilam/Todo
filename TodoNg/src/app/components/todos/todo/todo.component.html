@@ -1,1 +1,4 @@
-<div>{{todo.id}} : {{todo.title}} {{todo.done}}</div>
+<div>
+    <input (change)="onToggle(todo)" type="checkbox" />
+    {{todo.title}} {{todo.done}}
+</div>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Todo } from '../../models/Todo'
 
 @Component({
   selector: 'app-todos',
@@ -6,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./todos.component.css']
 })
 export class TodosComponent implements OnInit {
-  todos:object[];
+  todos:Todo[];
   constructor() { }
 
   ngOnInit(): void {
@@ -20,6 +21,12 @@ export class TodosComponent implements OnInit {
       title: "task 2",
       done: false
     }]
+  }
+
+  onUpdate(todoUpdate) {
+    let todo = this.todos.find( todo => todo.id === todoUpdate.id)
+    todo.title = todoUpdate.title
+    todo.done = todoUpdate.done
   }
 
 }

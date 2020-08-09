@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, Output, OnInit, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-todo',
@@ -7,9 +7,15 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class TodoComponent implements OnInit {
   @Input() todo;
+  @Output() update: EventEmitter<any> = new EventEmitter();
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  onToggle(todo) {
+    let todoUpdate = {...todo, done: !todo.done}
+    this.update.emit(todoUpdate)
   }
 
 }

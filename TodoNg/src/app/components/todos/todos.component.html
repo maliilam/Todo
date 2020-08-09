@@ -1,2 +1,2 @@
-<p>{{todos.length}} todos in total</p>
-<app-todo *ngFor="let todo of todos" [todo]="todo"></app-todo>
+<p>{{todos.length}} in total</p>
+<app-todo *ngFor="let todo of todos" [todo]="todo" (update)="onUpdate($event)"></app-todo>
