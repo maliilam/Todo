@@ -1,0 +1,8 @@
+.open {
+    color: blue;
+}
+
+.done {
+    text-decoration: line-through;
+    color: lightgray;
+}

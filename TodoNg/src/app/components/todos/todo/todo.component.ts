@@ -22,5 +22,8 @@ export class TodoComponent implements OnInit {
   onDelete(todo) {
     this.delete.emit(todo)
   }
+  todoClasses(todo) {
+    return todo.done ? "done" : "open"
+  }
 
 }
