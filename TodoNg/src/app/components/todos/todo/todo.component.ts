@@ -8,6 +8,8 @@ import { Component, Input, Output, OnInit, EventEmitter } from '@angular/core';
 export class TodoComponent implements OnInit {
   @Input() todo;
   @Output() update: EventEmitter<any> = new EventEmitter();
+  @Output() delete: EventEmitter<any> = new EventEmitter();
+
   constructor() { }
 
   ngOnInit(): void {
@@ -16,6 +18,9 @@ export class TodoComponent implements OnInit {
   onToggle(todo) {
     let todoUpdate = {...todo, done: !todo.done}
     this.update.emit(todoUpdate)
+  }
+  onDelete(todo) {
+    this.delete.emit(todo)
   }
 
 }

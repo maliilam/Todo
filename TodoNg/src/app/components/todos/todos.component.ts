@@ -22,14 +22,17 @@ export class TodosComponent implements OnInit {
       done: false
     }]
   }
-  onUpdate(todoUpdate) {
+  update(todoUpdate) {
     let todo = this.todos.find( todo => todo.id === todoUpdate.id)
     todo.title = todoUpdate.title
     todo.done = todoUpdate.done
   }
-  addTodo(todo) {
-    
+  add(todo) {
     let id = this.todos.length === 0 ? 0 : this.todos[this.todos.length - 1].id + 1
-    this.todos.push(todo)
+    this.todos.push({...todo, id : id})
+  }
+  delete(todo) {
+    console.log(todo, this.todos)
+    this.todos = [...this.todos.filter(td => td.id !== todo.id)]
   }
 }
