@@ -7,6 +7,6 @@
         <button (click)="onDelete(todo)">Delete</button>
     </span>
     <span *ngIf="editing">
-        <app-add-todo [todo]="todo" (update)="onUpdate($event)" (cancel)="editing=false"></app-add-todo>
+        <app-edit-todo [todo]="todo" (update)="onUpdate($event)" (cancel)="editing=false"></app-edit-todo>
     </span>
 </div>

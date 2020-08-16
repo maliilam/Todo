@@ -1,5 +1,5 @@
 <p>{{todos.length}} in total</p>
-<app-add-todo (update)="add($event)"></app-add-todo>
+<app-edit-todo (update)="add($event)"></app-edit-todo>
 <app-todo 
     *ngFor="let todo of todos" 
     [todo]="todo" 

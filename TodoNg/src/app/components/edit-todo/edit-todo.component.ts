@@ -2,23 +2,26 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Todo } from '../../models/Todo';
 
 @Component({
-  selector: 'app-add-todo',
-  templateUrl: './add-todo.component.html',
-  styleUrls: ['./add-todo.component.css']
+  selector: 'app-edit-todo',
+  templateUrl: './edit-todo.component.html',
+  styleUrls: ['./edit-todo.component.css']
 })
-export class AddTodoComponent implements OnInit {
+export class EditTodoComponent implements OnInit {
   title:String
+  okLabel:String
   @Input() todo: Todo;
   @Output() update: EventEmitter<any> = new EventEmitter();
   @Output() cancel: EventEmitter<any> = new EventEmitter();
   constructor() { }
 
   ngOnInit(): void {
+    this.okLabel = "Add"
     if (this.todo) {
       this.title = this.todo.title
-    }    
+      this.okLabel = "Update"
+    }
   }
-  add(): void {
+  onConfirm(): void {
     let todo = { title: this.title, done: false }
     this.update.emit(todo)
   }
