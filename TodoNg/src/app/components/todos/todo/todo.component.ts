@@ -9,18 +9,25 @@ export class TodoComponent implements OnInit {
   @Input() todo;
   @Output() update: EventEmitter<any> = new EventEmitter();
   @Output() delete: EventEmitter<any> = new EventEmitter();
+  editing: boolean;
 
-  constructor() { }
+  constructor() {
+    this.editing = false;
+   }
 
   ngOnInit(): void {
   }
-
-  onToggle(todo) {
-    let todoUpdate = {...todo, done: !todo.done}
+  onToggle(update) {
+    let todoUpdate = {...this.todo, done: !update.done}
     this.update.emit(todoUpdate)
   }
   onDelete(todo) {
     this.delete.emit(todo)
+  }
+  onUpdate(update) {
+    let todoUpdate = {...this.todo, title: update.title}
+    this.update.emit(todoUpdate)
+    this.editing = false;
   }
   todoClasses(todo) {
     return todo.done ? "done" : "open"

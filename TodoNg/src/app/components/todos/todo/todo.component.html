@@ -1,5 +1,12 @@
 <div>
-    <input (change)="onToggle(todo)" type="checkbox" />
-    <span [ngClass]="todoClasses(todo)">{{todo.title}}</span>
-    <button (click)="onDelete(todo)">Delete</button>
+    <span *ngIf="!editing">
+        <input (change)="onToggle(todo)" type="checkbox" />
+        <span [ngClass]="todoClasses(todo)" (click)="editing=true">
+            {{todo.title}}
+        </span>
+        <button (click)="onDelete(todo)">Delete</button>
+    </span>
+    <span *ngIf="editing">
+        <app-add-todo [todo]="todo" (update)="onUpdate($event)" (cancel)="editing=false"></app-add-todo>
+    </span>
 </div>

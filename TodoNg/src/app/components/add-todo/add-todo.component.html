@@ -1,2 +1,3 @@
 <input [(ngModel)]="title" type="text" name="title" placeholder="Type title of todo..." />
 <button (click)="add()" [disabled]="!title" [title]="title ? '' : 'Type title first'">Add</button>
+<button (click)="onCancel()" [hidden]="!todo">Cancel</button>
