@@ -23,13 +23,13 @@ export class TodoService {
             this.todos.splice(idx, 1, todoUpdate);
         });
     }
-    addTodo(todo) {
-        this.api.addTodo(todo).subscribe( todo => {
+    addTodo(newTodo) {
+        this.api.addTodo(newTodo).subscribe( todo => {
             this.todos.push(todo)
         });
     }
     deleteTodo(todo) {
-        this.api.deleteTodo(todo).subscribe( todo => {
+        this.api.deleteTodo(todo).subscribe( () => {
             let idx = this.todos.findIndex(td => td.id === todo.id);
             this.todos.splice(idx, 1);
         });
