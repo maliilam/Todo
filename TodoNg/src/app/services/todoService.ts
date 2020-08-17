@@ -1,25 +1,37 @@
 import { Injectable, SystemJsNgModuleLoader } from '@angular/core';
-import { Todo } from '../models/Todo'
 import { MemoryApiService } from '../apis/memory-api.service'
+import { JsonPlaceholderApiService } from '../apis/json-placeholder-api.service'
+import { Todo } from '../models/Todo'
 
 @Injectable({
     providedIn: 'root'
 })
 export class TodoService {
-    api: MemoryApiService;
-    constructor(api: MemoryApiService) {  
-        this.api = api;
+    todos:Todo[];
+    constructor(private api: JsonPlaceholderApiService) {
+        this.todos = [];
+        this.api.getTodos().subscribe( todos => {
+            this.todos = todos;
+        });
     }
     getTodos() {
-        return this.api.getTodos();
+        return this.todos;
     }
     updateTodo(todoUpdate) {
-        return this.api.updateTodo(todoUpdate);
+        this.api.updateTodo(todoUpdate).subscribe( () => {
+            let idx = this.todos.findIndex(td => td.id === todoUpdate.id);
+            this.todos.splice(idx, 1, todoUpdate);
+        });
     }
     addTodo(todo) {
-        return this.api.addTodo(todo);
+        this.api.addTodo(todo).subscribe( todo => {
+            this.todos.push(todo)
+        });
     }
     deleteTodo(todo) {
-        return this.api.deleteTodo(todo);
+        this.api.deleteTodo(todo).subscribe( todo => {
+            let idx = this.todos.findIndex(td => td.id === todo.id);
+            this.todos.splice(idx, 1);
+        });
     }
 }

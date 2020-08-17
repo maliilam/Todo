@@ -18,7 +18,7 @@ export class TodoComponent implements OnInit {
   ngOnInit(): void {
   }
   onToggle(update) {
-    let todoUpdate = {...this.todo, done: !update.done}
+    let todoUpdate = {...this.todo, completed: !update.completed}
     this.update.emit(todoUpdate)
   }
   onDelete(todo) {
@@ -30,7 +30,7 @@ export class TodoComponent implements OnInit {
     this.editing = false;
   }
   todoClasses(todo) {
-    return todo.done ? "done" : "open"
+    return todo.completed ? "completed" : "open"
   }
 
 }

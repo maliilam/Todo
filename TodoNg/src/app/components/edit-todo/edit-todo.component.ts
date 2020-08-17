@@ -22,7 +22,7 @@ export class EditTodoComponent implements OnInit {
     }
   }
   onConfirm(): void {
-    let todo = { title: this.title, done: false }
+    let todo = { title: this.title, completed: false }
     this.update.emit(todo)
   }
   onCancel(): void {

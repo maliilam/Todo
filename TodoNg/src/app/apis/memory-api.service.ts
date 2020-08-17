@@ -15,7 +15,7 @@ export class MemoryApiService {
   updateTodo(todoUpdate) {
       let todo = this.todos.find( todo => todo.id === todoUpdate.id)
       todo.title = todoUpdate.title
-      todo.done = todoUpdate.done
+      todo.completed = todoUpdate.completed
   }
   addTodo(todo) {
       let id = this.todos.length === 0 ? 0 : this.todos[this.todos.length - 1].id + 1
