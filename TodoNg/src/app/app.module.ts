@@ -10,6 +10,8 @@ import { HomeComponent } from './components/home/home.component';
 import { TodosComponent } from './components/todos/todos.component';
 import { TodoComponent } from './components/todos/todo/todo.component';
 import { EditTodoComponent } from './components/edit-todo/edit-todo.component';
+import { SettingComponent } from './components/setting/setting.component';
+import { HeaderComponent } from './components/header/header.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +19,9 @@ import { EditTodoComponent } from './components/edit-todo/edit-todo.component';
     HomeComponent,
     TodosComponent,
     TodoComponent,
-    EditTodoComponent
+    EditTodoComponent,
+    SettingComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
