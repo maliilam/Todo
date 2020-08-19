@@ -8,7 +8,7 @@ import { Todo } from '../models/Todo'
 })
 export class TodoService {
     todos:Todo[];
-    constructor(private api: JsonPlaceholderApiService) {
+    constructor(private api: MemoryApiService) {
         this.todos = [];
         this.api.getTodos().subscribe( todos => {
             this.todos = todos;
@@ -24,7 +24,9 @@ export class TodoService {
         });
     }
     addTodo(newTodo) {
+        console.log("service add todo:", newTodo)
         this.api.addTodo(newTodo).subscribe( todo => {
+            console.log("service add todo subscribe:", todo)
             this.todos.push(todo)
         });
     }

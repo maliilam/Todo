@@ -20,9 +20,9 @@ export class JsonPlaceholderApiService {
   getTodos():Observable<Todo[]> {
     return this.http.get<Todo[]>(`${this.todosUrl}${this.todosLimit}`);
   }
-  updateTodo(todoUpdate) {
+  updateTodo(todoUpdate):Observable<Todo> {
     const url = `${this.todosUrl}/${todoUpdate.id}`
-    return this.http.put(url, todoUpdate, httpOptions);
+    return this.http.put<Todo>(url, todoUpdate, httpOptions);
   }
   addTodo(todo:Todo):Observable<Todo> {
     return this.http.post<Todo>(this.todosUrl,
