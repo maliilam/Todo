@@ -24,9 +24,7 @@ export class TodoService {
         });
     }
     addTodo(newTodo) {
-        console.log("service add todo:", newTodo)
         this.api.addTodo(newTodo).subscribe( todo => {
-            console.log("service add todo subscribe:", todo)
             this.todos.push(todo)
         });
     }
