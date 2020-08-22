@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
-import { Todo } from '../models/Todo'
 import { Observable, Subscriber } from 'rxjs';
+import { Todo } from '../models/Todo'
+import { TodoApi } from './todoApi'
 
 @Injectable({
   providedIn: 'root'
 })
-export class MemoryApiService {
+export class MemoryApiService implements TodoApi {
   todos:Todo[];
   constructor() {
     this.todos = [];

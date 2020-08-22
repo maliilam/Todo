@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http'
 import { Observable } from 'rxjs';
 import { Todo } from '../models/Todo'
+import { TodoApi } from './todoApi'
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -12,7 +13,7 @@ const httpOptions = {
 @Injectable({
   providedIn: 'root'
 })
-export class JsonPlaceholderApiService {
+export class JsonPlaceholderApiService implements TodoApi {
   todosUrl:string = 'https://jsonplaceholder.typicode.com/todos';
   todosLimit = '?_limit=5';
 

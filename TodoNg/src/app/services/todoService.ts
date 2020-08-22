@@ -2,13 +2,16 @@ import { Injectable, SystemJsNgModuleLoader } from '@angular/core';
 import { MemoryApiService } from '../apis/memory-api.service'
 import { JsonPlaceholderApiService } from '../apis/json-placeholder-api.service'
 import { Todo } from '../models/Todo'
+import { TodoApi } from '../apis/todoApi';
 
 @Injectable({
     providedIn: 'root'
 })
 export class TodoService {
     todos:Todo[];
-    constructor(private api: MemoryApiService) {
+    api: TodoApi;
+    constructor(private memoryApi: MemoryApiService) {
+        this.api = memoryApi;
         this.todos = [];
         this.api.getTodos().subscribe( todos => {
             this.todos = todos;
