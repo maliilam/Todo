@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TodoService } from '../../services/todoService'
 
 @Component({
   selector: 'app-setting',
@@ -7,9 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SettingComponent implements OnInit {
 
-  constructor() { }
+  constructor(private todoService:TodoService) {
+  }
 
   ngOnInit(): void {
+  }
+
+  get apis() {
+    return this.todoService.getApis();
+  }
+
+  onApiChange(apiName) {
+    this.todoService.changeApi(apiName);
   }
 
 }

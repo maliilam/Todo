@@ -9,14 +9,31 @@ import { TodoApi } from '../apis/todoApi';
 })
 export class TodoService {
     todos:Todo[];
+    apis: TodoApi[];
     api: TodoApi;
-    constructor(private memoryApi: MemoryApiService) {
-        this.api = memoryApi;
+    constructor(private memoryApi: MemoryApiService, private jsonApi: JsonPlaceholderApiService) {
+        this.apis = [memoryApi, jsonApi];
+        this.api = this.apis[1];
         this.todos = [];
         this.api.getTodos().subscribe( todos => {
             this.todos = todos;
         });
     }
+
+    getApis() {
+        return this.apis.map(api => ({
+            name: api.constructor.name,
+            selected: api === this.api
+        }));
+    }
+    changeApi(name) {
+        this.api = this.apis.find(api => api.constructor.name === name)
+        this.api.getTodos().subscribe( todos => {
+            this.todos = todos;
+        });
+        console.log("service api change to:", this.api)
+    }
+
     getTodos() {
         return this.todos;
     }
