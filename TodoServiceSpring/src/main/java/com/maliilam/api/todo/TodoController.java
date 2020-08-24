@@ -1,12 +1,12 @@
 package com.maliilam.api.todo;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
 
-@RestController
+@Controller
 public class TodoController {
-	@GetMapping("/")
+	@RequestMapping("/")
 	public String index() {
-		return "hello!";
+		return "index";
 	}
 }
