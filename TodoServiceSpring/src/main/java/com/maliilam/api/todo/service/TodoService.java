@@ -6,6 +6,9 @@ import java.util.Optional;
 import com.maliilam.api.todo.dao.TodoDAO;
 import com.maliilam.api.todo.model.Todo;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class TodoService {
 
     private TodoDAO todoDAO;

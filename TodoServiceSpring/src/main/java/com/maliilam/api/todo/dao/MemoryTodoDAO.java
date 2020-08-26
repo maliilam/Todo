@@ -6,6 +6,9 @@ import java.util.Optional;
 
 import com.maliilam.api.todo.model.Todo;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class MemoryTodoDAO implements TodoDAO {
     private List<Todo> todos = new ArrayList<Todo>();
     private Integer maxId = 0;
