@@ -1,6 +1,7 @@
 import { Injectable, SystemJsNgModuleLoader } from '@angular/core';
 import { MemoryApiService } from '../apis/memory-api.service'
 import { JsonPlaceholderApiService } from '../apis/json-placeholder-api.service'
+import { SpringRestApiService } from '../apis/spring-rest-api.service'
 import { Todo } from '../models/Todo'
 import { TodoApi } from '../apis/todoApi';
 
@@ -11,8 +12,11 @@ export class TodoService {
     todos:Todo[];
     apis: TodoApi[];
     api: TodoApi;
-    constructor(private memoryApi: MemoryApiService, private jsonApi: JsonPlaceholderApiService) {
-        this.apis = [memoryApi, jsonApi];
+    constructor(
+        private memoryApi: MemoryApiService, 
+        private jsonApi: JsonPlaceholderApiService,
+        private springRestApi: SpringRestApiService) {
+        this.apis = [memoryApi, jsonApi, springRestApi];
         this.api = this.apis[1];
         this.todos = [];
         this.api.getTodos().subscribe( todos => {

@@ -23,16 +23,16 @@ webpackEmptyAsyncContext.id = "./$$_lazy_route_resource lazy recursive";
 
 /***/ }),
 
-/***/ "./src/app/apis/json-placeholder-api.service.ts":
-/*!******************************************************!*\
-  !*** ./src/app/apis/json-placeholder-api.service.ts ***!
-  \******************************************************/
-/*! exports provided: JsonPlaceholderApiService */
+/***/ "./src/app/apis/json-api.service.ts":
+/*!******************************************!*\
+  !*** ./src/app/apis/json-api.service.ts ***!
+  \******************************************/
+/*! exports provided: JsonApiService */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "JsonPlaceholderApiService", function() { return JsonPlaceholderApiService; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "JsonApiService", function() { return JsonApiService; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/__ivy_ngcc__/fesm2015/http.js");
 
@@ -44,10 +44,9 @@ const httpOptions = {
         'Content-Type': 'application/json'
     })
 };
-class JsonPlaceholderApiService {
+class JsonApiService {
     constructor(http) {
         this.http = http;
-        this.todosUrl = 'https://jsonplaceholder.typicode.com/todos';
         this.todosLimit = '?_limit=5';
     }
     getTodos() {
@@ -65,14 +64,48 @@ class JsonPlaceholderApiService {
         return this.http.delete(url, httpOptions);
     }
 }
-JsonPlaceholderApiService.ɵfac = function JsonPlaceholderApiService_Factory(t) { return new (t || JsonPlaceholderApiService)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"])); };
-JsonPlaceholderApiService.ɵprov = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjectable"]({ token: JsonPlaceholderApiService, factory: JsonPlaceholderApiService.ɵfac, providedIn: 'root' });
-/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](JsonPlaceholderApiService, [{
+JsonApiService.ɵfac = function JsonApiService_Factory(t) { return new (t || JsonApiService)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"])); };
+JsonApiService.ɵprov = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjectable"]({ token: JsonApiService, factory: JsonApiService.ɵfac, providedIn: 'root' });
+/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](JsonApiService, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"],
         args: [{
                 providedIn: 'root'
             }]
     }], function () { return [{ type: _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"] }]; }, null); })();
+
+
+/***/ }),
+
+/***/ "./src/app/apis/json-placeholder-api.service.ts":
+/*!******************************************************!*\
+  !*** ./src/app/apis/json-placeholder-api.service.ts ***!
+  \******************************************************/
+/*! exports provided: JsonPlaceholderApiService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "JsonPlaceholderApiService", function() { return JsonPlaceholderApiService; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+/* harmony import */ var _json_api_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./json-api.service */ "./src/app/apis/json-api.service.ts");
+
+
+
+class JsonPlaceholderApiService extends _json_api_service__WEBPACK_IMPORTED_MODULE_1__["JsonApiService"] {
+    constructor() {
+        super(...arguments);
+        this.todosUrl = 'https://jsonplaceholder.typicode.com/todos';
+    }
+}
+JsonPlaceholderApiService.ɵfac = function JsonPlaceholderApiService_Factory(t) { return ɵJsonPlaceholderApiService_BaseFactory(t || JsonPlaceholderApiService); };
+JsonPlaceholderApiService.ɵprov = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjectable"]({ token: JsonPlaceholderApiService, factory: JsonPlaceholderApiService.ɵfac, providedIn: 'root' });
+const ɵJsonPlaceholderApiService_BaseFactory = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetInheritedFactory"](JsonPlaceholderApiService);
+/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](JsonPlaceholderApiService, [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"],
+        args: [{
+                providedIn: 'root'
+            }]
+    }], null, null); })();
 
 
 /***/ }),
@@ -124,6 +157,41 @@ MemoryApiService.ɵprov = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefine
                 providedIn: 'root'
             }]
     }], function () { return []; }, null); })();
+
+
+/***/ }),
+
+/***/ "./src/app/apis/spring-rest-api.service.ts":
+/*!*************************************************!*\
+  !*** ./src/app/apis/spring-rest-api.service.ts ***!
+  \*************************************************/
+/*! exports provided: SpringRestApiService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SpringRestApiService", function() { return SpringRestApiService; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+/* harmony import */ var _json_api_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./json-api.service */ "./src/app/apis/json-api.service.ts");
+
+
+
+class SpringRestApiService extends _json_api_service__WEBPACK_IMPORTED_MODULE_1__["JsonApiService"] {
+    constructor() {
+        super(...arguments);
+        this.todosUrl = 'https://localhost:8080/api/todos';
+        this.todosLimit = '';
+    }
+}
+SpringRestApiService.ɵfac = function SpringRestApiService_Factory(t) { return ɵSpringRestApiService_BaseFactory(t || SpringRestApiService); };
+SpringRestApiService.ɵprov = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjectable"]({ token: SpringRestApiService, factory: SpringRestApiService.ɵfac, providedIn: 'root' });
+const ɵSpringRestApiService_BaseFactory = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetInheritedFactory"](SpringRestApiService);
+/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](SpringRestApiService, [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"],
+        args: [{
+                providedIn: 'root'
+            }]
+    }], null, null); })();
 
 
 /***/ }),
@@ -707,15 +775,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
 /* harmony import */ var _apis_memory_api_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../apis/memory-api.service */ "./src/app/apis/memory-api.service.ts");
 /* harmony import */ var _apis_json_placeholder_api_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../apis/json-placeholder-api.service */ "./src/app/apis/json-placeholder-api.service.ts");
+/* harmony import */ var _apis_spring_rest_api_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../apis/spring-rest-api.service */ "./src/app/apis/spring-rest-api.service.ts");
+
 
 
 
 
 class TodoService {
-    constructor(memoryApi, jsonApi) {
+    constructor(memoryApi, jsonApi, springRestApi) {
         this.memoryApi = memoryApi;
         this.jsonApi = jsonApi;
-        this.apis = [memoryApi, jsonApi];
+        this.springRestApi = springRestApi;
+        this.apis = [memoryApi, jsonApi, springRestApi];
         this.api = this.apis[1];
         this.todos = [];
         this.api.getTodos().subscribe(todos => {
@@ -756,14 +827,14 @@ class TodoService {
         });
     }
 }
-TodoService.ɵfac = function TodoService_Factory(t) { return new (t || TodoService)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_apis_memory_api_service__WEBPACK_IMPORTED_MODULE_1__["MemoryApiService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_apis_json_placeholder_api_service__WEBPACK_IMPORTED_MODULE_2__["JsonPlaceholderApiService"])); };
+TodoService.ɵfac = function TodoService_Factory(t) { return new (t || TodoService)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_apis_memory_api_service__WEBPACK_IMPORTED_MODULE_1__["MemoryApiService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_apis_json_placeholder_api_service__WEBPACK_IMPORTED_MODULE_2__["JsonPlaceholderApiService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_apis_spring_rest_api_service__WEBPACK_IMPORTED_MODULE_3__["SpringRestApiService"])); };
 TodoService.ɵprov = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjectable"]({ token: TodoService, factory: TodoService.ɵfac, providedIn: 'root' });
 /*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](TodoService, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"],
         args: [{
                 providedIn: 'root'
             }]
-    }], function () { return [{ type: _apis_memory_api_service__WEBPACK_IMPORTED_MODULE_1__["MemoryApiService"] }, { type: _apis_json_placeholder_api_service__WEBPACK_IMPORTED_MODULE_2__["JsonPlaceholderApiService"] }]; }, null); })();
+    }], function () { return [{ type: _apis_memory_api_service__WEBPACK_IMPORTED_MODULE_1__["MemoryApiService"] }, { type: _apis_json_placeholder_api_service__WEBPACK_IMPORTED_MODULE_2__["JsonPlaceholderApiService"] }, { type: _apis_spring_rest_api_service__WEBPACK_IMPORTED_MODULE_3__["SpringRestApiService"] }]; }, null); })();
 
 
 /***/ }),

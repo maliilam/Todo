@@ -1,9 +1,11 @@
 import { Injectable } from '@angular/core';
 import { JsonApiService } from './json-api.service'
 
+
 @Injectable({
   providedIn: 'root'
 })
-export class JsonPlaceholderApiService extends JsonApiService {
-  todosUrl:string = 'https://jsonplaceholder.typicode.com/todos';
+export class SpringRestApiService extends JsonApiService {
+  todosUrl:string = 'https://localhost:8080/api/todos';
+  todosLimit = '';
 }

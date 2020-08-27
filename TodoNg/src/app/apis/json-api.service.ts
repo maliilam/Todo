@@ -14,7 +14,7 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class JsonApiService implements TodoApi {
-  todosUrl:string = 'https://jsonplaceholder.typicode.com/todos';
+  todosUrl:string;
   todosLimit = '?_limit=5';
 
   constructor(protected http:HttpClient) { }
