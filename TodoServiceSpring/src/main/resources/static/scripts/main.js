@@ -47,10 +47,9 @@ const httpOptions = {
 class JsonApiService {
     constructor(http) {
         this.http = http;
-        this.todosLimit = '?_limit=5';
     }
     getTodos() {
-        return this.http.get(`${this.todosUrl}${this.todosLimit}`);
+        return this.http.get(`${this.todosUrl}${this.params}`, httpOptions);
     }
     updateTodo(todoUpdate) {
         const url = `${this.todosUrl}/${todoUpdate.id}`;
@@ -95,6 +94,7 @@ class JsonPlaceholderApiService extends _json_api_service__WEBPACK_IMPORTED_MODU
     constructor() {
         super(...arguments);
         this.todosUrl = 'https://jsonplaceholder.typicode.com/todos';
+        this.params = '?_limit=5';
     }
 }
 JsonPlaceholderApiService.ɵfac = function JsonPlaceholderApiService_Factory(t) { return ɵJsonPlaceholderApiService_BaseFactory(t || JsonPlaceholderApiService); };
@@ -179,8 +179,8 @@ __webpack_require__.r(__webpack_exports__);
 class SpringRestApiService extends _json_api_service__WEBPACK_IMPORTED_MODULE_1__["JsonApiService"] {
     constructor() {
         super(...arguments);
-        this.todosUrl = 'https://localhost:8080/api/todos';
-        this.todosLimit = '';
+        this.todosUrl = 'http://localhost:8080/api/todos';
+        this.params = '';
     }
 }
 SpringRestApiService.ɵfac = function SpringRestApiService_Factory(t) { return ɵSpringRestApiService_BaseFactory(t || SpringRestApiService); };
@@ -787,7 +787,7 @@ class TodoService {
         this.jsonApi = jsonApi;
         this.springRestApi = springRestApi;
         this.apis = [memoryApi, jsonApi, springRestApi];
-        this.api = this.apis[1];
+        this.api = this.apis[0];
         this.todos = [];
         this.api.getTodos().subscribe(todos => {
             this.todos = todos;

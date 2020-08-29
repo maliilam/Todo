@@ -17,7 +17,7 @@ export class TodoService {
         private jsonApi: JsonPlaceholderApiService,
         private springRestApi: SpringRestApiService) {
         this.apis = [memoryApi, jsonApi, springRestApi];
-        this.api = this.apis[1];
+        this.api = this.apis[0];
         this.todos = [];
         this.api.getTodos().subscribe( todos => {
             this.todos = todos;

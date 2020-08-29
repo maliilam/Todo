@@ -15,11 +15,11 @@ const httpOptions = {
 })
 export class JsonApiService implements TodoApi {
   todosUrl:string;
-  todosLimit = '?_limit=5';
+  params:string;
 
   constructor(protected http:HttpClient) { }
   getTodos():Observable<Todo[]> {
-    return this.http.get<Todo[]>(`${this.todosUrl}${this.todosLimit}`);
+    return this.http.get<Todo[]>(`${this.todosUrl}${this.params}`, httpOptions);
   }
   updateTodo(todoUpdate):Observable<Todo> {
     const url = `${this.todosUrl}/${todoUpdate.id}`

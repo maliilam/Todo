@@ -6,4 +6,5 @@ import { JsonApiService } from './json-api.service'
 })
 export class JsonPlaceholderApiService extends JsonApiService {
   todosUrl:string = 'https://jsonplaceholder.typicode.com/todos';
+  params:string = '?_limit=5';
 }
