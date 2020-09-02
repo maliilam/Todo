@@ -1,0 +1,7 @@
+DROP TABLE IF EXISTS employee;
+
+CREATE TABLE todo (
+  id VARCHAR(10) NOT NULL,
+  title VARCHAR(100) NOT NULL,
+  completed BIT(1) NOT NULL
+);
