@@ -25,7 +25,9 @@ public class MySQLTodoDAO extends JdbcDaoSupport implements TodoDAO {
     }
     
     public List<Todo> getTodos() {
-        return List.of();
+        String sql = "SELECT * FROM todo";
+        List<Todo> todos = getJdbcTemplate().queryForList(sql, Todo.class);
+        return todos;
     }
     public Optional<Todo> getTodo(String id) {
         return Optional.empty();
