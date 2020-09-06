@@ -22,6 +22,7 @@ public class MySQLTodoDAO extends JdbcDaoSupport implements TodoDAO {
     @PostConstruct
     private void initialize() {
         setDataSource(dataSource);
+        
     }
     
     public List<Todo> getTodos() {
