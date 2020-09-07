@@ -34,7 +34,9 @@ public class MySQLTodoDAO extends JdbcDaoSupport implements TodoDAO {
         return Optional.empty();
     }
     public Optional<Todo> addTodo(Todo todo) {
-        return Optional.empty();
+        String sql = "INSERT INTO todo (title, completed) VALUES (?, ?)";
+        getJdbcTemplate().update(sql, todo.title, todo.completed );
+        return Optional.of(todo);
     }
     public Optional<Todo> updateTodo(Todo todoUpdate) {
         return Optional.empty();
