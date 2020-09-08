@@ -31,17 +31,24 @@ public class MySQLTodoDAO extends JdbcDaoSupport implements TodoDAO {
         return todos;
     }
     public Optional<Todo> getTodo(String id) {
-        return Optional.empty();
+        String sql = "SELECT * FROM todo WHERE id = ?";
+        Todo todo = getJdbcTemplate().queryForObject(sql, Todo.class);
+        return Optional.of(todo);
     }
     public Optional<Todo> addTodo(Todo todo) {
         String sql = "INSERT INTO todo (title, completed) VALUES (?, ?)";
-        getJdbcTemplate().update(sql, todo.title, todo.completed );
+        getJdbcTemplate().update(sql, todo.title, todo.completed);
         return Optional.of(todo);
     }
-    public Optional<Todo> updateTodo(Todo todoUpdate) {
-        return Optional.empty();
+    public Optional<Todo> updateTodo(Todo todo) {
+        String sql = "UPDAET todo SET title = ?, completed = ? WHERE id = ?";
+        getJdbcTemplate().update(sql, todo.title, todo.completed, todo.id);
+        return Optional.of(todo);
     }
     public Optional<Todo> deleteTodo(String id) {
-        return Optional.empty();
+        Optional<Todo> todo = this.getTodo(id);
+        String sql = "DELETE FROM todo WHERE id = ?";
+        getJdbcTemplate().update(sql, id);
+        return todo;
     }
 }
