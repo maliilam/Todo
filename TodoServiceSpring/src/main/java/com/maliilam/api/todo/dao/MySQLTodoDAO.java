@@ -1,5 +1,9 @@
 package com.maliilam.api.todo.dao;
 
+import java.math.BigDecimal;
+import java.math.BigInteger;
+import java.sql.PreparedStatement;
+import java.sql.Statement;
 import java.util.List;
 import java.util.Optional;
 
@@ -11,6 +15,7 @@ import com.maliilam.api.todo.model.Todo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
 import org.springframework.jdbc.core.support.JdbcDaoSupport;
+import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.stereotype.Repository;
 
 @Repository
@@ -37,7 +42,17 @@ public class MySQLTodoDAO extends JdbcDaoSupport implements TodoDAO {
     }
     public Optional<Todo> addTodo(Todo todo) {
         String sql = "INSERT INTO todo (title, completed) VALUES (?, ?)";
-        getJdbcTemplate().update(sql, todo.title, todo.completed);
+        //getJdbcTemplate().update(sql, todo.title, todo.completed);
+        GeneratedKeyHolder keyHolder = new GeneratedKeyHolder();
+        getJdbcTemplate().update(con -> {
+            //PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            PreparedStatement ps = con.prepareStatement(sql, new String[]{"id"});
+            ps.setString(1, todo.title);
+            ps.setBoolean(2, todo.completed);
+            return ps;
+        }, keyHolder);
+        BigInteger d = (BigInteger) keyHolder.getKeys().get("GENERATED_KEY");// why?
+        todo.id = d.toString();
         return Optional.of(todo);
     }
     public Optional<Todo> updateTodo(Todo todo) {
