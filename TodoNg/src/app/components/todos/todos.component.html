@@ -1,4 +1,5 @@
-<p>{{todos.length}} in total</p>
+<div>Connected to {{apiName}}</div>
+<div>{{todos.length}} in total</div>
 <app-edit-todo (update)="add($event)"></app-edit-todo>
 <app-todo 
     *ngFor="let todo of todos" 

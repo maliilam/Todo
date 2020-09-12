@@ -11,6 +11,9 @@ export class TodosComponent implements OnInit {
 
   ngOnInit(): void {
   }
+  get apiName() {
+    return this.todoService.getApiName();
+  }
   get todos() {
     return this.todoService.getTodos();
   }

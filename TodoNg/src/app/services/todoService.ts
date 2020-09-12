@@ -24,6 +24,10 @@ export class TodoService {
         });
     }
 
+    getApiName() {
+        return this.api.constructor.name
+    }
+
     getApis() {
         return this.apis.map(api => ({
             name: api.constructor.name,
@@ -37,7 +41,6 @@ export class TodoService {
         });
         console.log("service api change to:", this.api)
     }
-
     getTodos() {
         return this.todos;
     }
