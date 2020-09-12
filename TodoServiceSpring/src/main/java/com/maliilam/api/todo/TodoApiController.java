@@ -30,7 +30,7 @@ public class TodoApiController {
     }
 
     @GetMapping(value = "/todos", params = "id")
-    public Optional<Todo> getTodo(@PathVariable String id) {
+    public Optional<Todo> getTodo(@PathVariable Integer id) {
         return this.todoService.getTodo(id);
     }
 
@@ -45,7 +45,7 @@ public class TodoApiController {
     }
 
     @DeleteMapping("/todos/{id}")
-    public Optional<Todo> deleteTodo(@PathVariable String id) {
+    public Optional<Todo> deleteTodo(@PathVariable Integer id) {
         return this.todoService.deleteTodo(id);
     }
 }

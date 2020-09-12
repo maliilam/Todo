@@ -7,8 +7,8 @@ import com.maliilam.api.todo.model.Todo;
 
 public interface TodoDAO {
     public List<Todo> getTodos();
-    public Optional<Todo> getTodo(String id);
+    public Optional<Todo> getTodo(Integer id);
     public Optional<Todo> addTodo(Todo todo);
     public Optional<Todo> updateTodo(Todo todo);
-    public Optional<Todo> deleteTodo(String id);
+    public Optional<Todo> deleteTodo(Integer id);
 }

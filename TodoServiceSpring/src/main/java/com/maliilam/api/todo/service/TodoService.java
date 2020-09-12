@@ -19,7 +19,7 @@ public class TodoService {
     public List<Todo> getTodos() {
         return todoDAO.getTodos();
     }
-    public Optional<Todo> getTodo(String id) {
+    public Optional<Todo> getTodo(Integer id) {
         return todoDAO.getTodo(id);
     }
     public Optional<Todo> addTodo(Todo todo) {
@@ -28,7 +28,7 @@ public class TodoService {
     public Optional<Todo> updateTodo(Todo todo) {
         return this.todoDAO.updateTodo(todo);
     }
-    public Optional<Todo> deleteTodo(String id) {
+    public Optional<Todo> deleteTodo(Integer id) {
         return this.todoDAO.deleteTodo(id);
     }
 

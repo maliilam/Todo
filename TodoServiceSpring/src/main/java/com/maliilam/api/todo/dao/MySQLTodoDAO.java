@@ -1,10 +1,9 @@
 package com.maliilam.api.todo.dao;
 
-import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.sql.PreparedStatement;
-import java.sql.Statement;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 import javax.annotation.PostConstruct;
@@ -35,10 +34,10 @@ public class MySQLTodoDAO extends JdbcDaoSupport implements TodoDAO {
         List<Todo> todos = getJdbcTemplate().queryForList(sql, Todo.class);
         return todos;
     }
-    public Optional<Todo> getTodo(String id) {
+    public Optional<Todo> getTodo(Integer id) {
         String sql = "SELECT * FROM todo WHERE id = ?";
-        Todo todo = getJdbcTemplate().queryForObject(sql, Todo.class);
-        return Optional.of(todo);
+        Map<String, Object> todoMap = getJdbcTemplate().queryForMap(sql, id);
+        return Optional.of(new Todo(todoMap));
     }
     public Optional<Todo> addTodo(Todo todo) {
         String sql = "INSERT INTO todo (title, completed) VALUES (?, ?)";
@@ -52,15 +51,15 @@ public class MySQLTodoDAO extends JdbcDaoSupport implements TodoDAO {
             return ps;
         }, keyHolder);
         BigInteger d = (BigInteger) keyHolder.getKeys().get("GENERATED_KEY");// why?
-        todo.id = d.toString();
+        todo.id = d.intValue();
         return Optional.of(todo);
     }
     public Optional<Todo> updateTodo(Todo todo) {
-        String sql = "UPDAET todo SET title = ?, completed = ? WHERE id = ?";
+        String sql = "UPDATE todo SET title = ?, completed = ? WHERE id = ?";
         getJdbcTemplate().update(sql, todo.title, todo.completed, todo.id);
         return Optional.of(todo);
     }
-    public Optional<Todo> deleteTodo(String id) {
+    public Optional<Todo> deleteTodo(Integer id) {
         Optional<Todo> todo = this.getTodo(id);
         String sql = "DELETE FROM todo WHERE id = ?";
         getJdbcTemplate().update(sql, id);

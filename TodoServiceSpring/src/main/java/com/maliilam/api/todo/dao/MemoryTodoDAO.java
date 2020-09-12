@@ -15,11 +15,11 @@ public class MemoryTodoDAO implements TodoDAO {
     public List<Todo> getTodos() {
         return todos;
     }
-    public Optional<Todo> getTodo(String id) {
+    public Optional<Todo> getTodo(Integer id) {
         return todos.stream().filter(todo -> todo.id.equals(id)).findFirst();
     }
     public Optional<Todo> addTodo(Todo todo) {
-        todo.id = (maxId++).toString();
+        todo.id = maxId++;
         this.todos.add(todo);
         return Optional.of(todo);
     }
@@ -33,7 +33,7 @@ public class MemoryTodoDAO implements TodoDAO {
         });
         return foundTodo;
     }
-    public Optional<Todo> deleteTodo(String id) {
+    public Optional<Todo> deleteTodo(Integer id) {
         Optional<Todo> foundTodo = todos.stream().filter(todo -> todo.id.equals(id)).findFirst();
         foundTodo.ifPresent( td -> todos.removeIf(todo -> todo.id.equals(id)));
         return foundTodo;        
